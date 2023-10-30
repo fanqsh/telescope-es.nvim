@@ -54,11 +54,13 @@ end
 
 local run = function(opts)
     opts = vim.tbl_deep_extend("force", es_config, opts or {})
-	local cwd = vim.loop.cwd()
+    local szTitle = "Everything";
+    local cwd = vim.loop.cwd()
     local command_params = {}
-	if opts.current_dir then
-		table.insert(command_params, cwd);
-	end
+    if opts.current_dir then
+        szTitle = string.format("%s:%s", szTitle, cwd);
+        table.insert(command_params, cwd);
+    end
 
     if opts.case_sensitive then
         table.insert(command_params, "-case")
@@ -87,7 +89,7 @@ local run = function(opts)
 
     pickers
         .new(opts, {
-            prompt_title = "Everything:" .. cwd,
+            prompt_title = szTitle,
             finder = finders.new_job(function(prompt)
                 if not prompt or prompt == "" then
                     return nil
