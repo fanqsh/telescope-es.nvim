@@ -33,7 +33,6 @@ local function SplitStr(szStrConcat, szSep)
 		return tbStrElem;
 	end
 
-	--特殊转义字符指定长度
 	local tbSpeSep = {
 		["%."] = 1;
 		["%$"] = 1;
