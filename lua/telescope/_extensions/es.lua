@@ -86,7 +86,6 @@ local run = function(opts)
         table.insert(command_params, "-regex")
     end
 
-	local nCount = #command_params;
     pickers
         .new(opts, {
             prompt_title = "Everything:" .. cwd,
@@ -95,7 +94,7 @@ local run = function(opts)
                     return nil
                 end
 
-				local tbInfo = SplitStr(prompt, " ");
+                local tbInfo = SplitStr(prompt, " ");
                 return flatten({ opts.es_path, command_params, tbInfo })
             end, opts.entry_maker or make_entry.gen_from_file(opts)),
             previewer = conf.file_previewer(opts),
